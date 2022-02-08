@@ -6,7 +6,9 @@ namespace AdvanceAddressBookSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("------------Welcome To Adderess Book Program-------------");
+            AdvanceAddressBookSystem.AddressBook.GetContact();
+            AdvanceAddressBookSystem.AddressBook.ListContact();
         }
     }
 }
