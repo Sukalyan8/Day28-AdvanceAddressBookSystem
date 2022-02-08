@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AdvanceAddressBookSystem
 {
-    class AddressBook
+    public class AddressBook
     {
         public static List<Person> People = new List<Person>();
         public class Person
