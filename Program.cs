@@ -8,6 +8,8 @@ namespace AdvanceAddressBookSystem
         {
             Console.WriteLine("------------Welcome To Adderess Book Program-------------");
             AdvanceAddressBookSystem.AddressBook.GetContact();
+            //Editing -Contact
+            AddressBook.EditContact();
             AdvanceAddressBookSystem.AddressBook.ListContact();
         }
     }
