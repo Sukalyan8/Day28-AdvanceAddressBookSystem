@@ -127,7 +127,7 @@ namespace AdvanceAddressBookSystem
         }
 
 
-        //Print contact details
+        //print contact details
         public void PrintContact(AddressBook person)
         {
             Console.WriteLine("First Name: " + person.firstName);
@@ -215,7 +215,6 @@ namespace AdvanceAddressBookSystem
             }
         }
 
-
         public void ListContact()
         {
             if (people.Count == 0)
@@ -247,8 +246,8 @@ namespace AdvanceAddressBookSystem
             }
             Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
             
+            
             //  PrintContact(person);
-
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
                 people.Remove(person);
@@ -266,7 +265,7 @@ namespace AdvanceAddressBookSystem
                 Console.WriteLine("Found person \"{0}\" in Address Book \"{1}\" , residing in City {2}", i.firstName, key, i.city);
             }
         }
-        
+
         //Display Person names found in given State
         public static void StoreStateList(string key, List<AddressBook> stateList, string state)
         {
@@ -305,7 +304,26 @@ namespace AdvanceAddressBookSystem
 
                 }
             }
-
         }
+        public static void SortByPersonName(Dictionary<string, List<AddressBook>> addressBook)
+        {
+
+            SortedList<string, AddressBook> sorted;
+            foreach (KeyValuePair<string, List<AddressBook>> kvp in addressBook)
+            {
+                Console.WriteLine("\n--------Displaying sorted Contact Person Details in address book: {0}-------\n", kvp.Key);
+                sorted = new SortedList<string, AddressBook>();
+                foreach (var member in kvp.Value)
+                {
+                    sorted.Add(member.firstName, member);
+                }
+                foreach (var member in sorted)
+                {
+                    Console.WriteLine(member.Value.ToString());
+
+                }
+            }
+        }
+
     }
 }
