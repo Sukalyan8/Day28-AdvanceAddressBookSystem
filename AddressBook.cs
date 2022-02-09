@@ -5,9 +5,19 @@ using System.Text;
 
 namespace AdvanceAddressBookSystem
 {
-    public class AddressBook
+    public interface IAddressBook
     {
-        public static List<Person> People = new List<Person>();
+        void GetContact();
+        void ListContact();
+        void DeletePeople();
+    }
+    public class AddressBook : IAddressBook
+    {
+        public LinkedList<Person> people;
+        public AddressBook()
+        {
+            people = new LinkedList<Person>();
+        }
         public class Person
         {
             public string FirstName { get; set; }
@@ -20,13 +30,9 @@ namespace AdvanceAddressBookSystem
             public string PhoneNum { get; set; }
             public string EmailId { get; set; }
         }
-        //adding contact
-        internal static void PrintContact(object person)
-        {
-            throw new NotImplementedException();
-        }
 
-        public static void GetContact()
+        //adding contact
+        public void GetContact()
         {
             Person person = new Person();
 
@@ -54,9 +60,11 @@ namespace AdvanceAddressBookSystem
             Console.Write("Enter EmailId: ");
             person.EmailId = Console.ReadLine();
 
-            People.Add(person);
+            people.AddLast(person);
         }
-        public static void PrintContact(Person person)
+
+        //print contact
+        public void PrintContact(Person person)
         {
             Console.WriteLine("First Name: " + person.FirstName);
             Console.WriteLine("Last Name: " + person.LastName);
@@ -66,19 +74,19 @@ namespace AdvanceAddressBookSystem
             Console.WriteLine("State : " + person.State);
             Console.WriteLine("ZipCode : " + person.ZipCode);
             Console.WriteLine("Phone Number: " + person.PhoneNum);
-            Console.WriteLine("EmailId: " + person.EmailId);
-            Console.WriteLine("-----------------------------------------------------------");
-            Console.WriteLine("-----------------------------------------------------------");
+            Console.WriteLine("Email Id: " + person.EmailId);
+            Console.WriteLine("-------------------------------------------");
         }
 
+
         //Editing Contact In Address Book
-        public static void EditContact()
+        public void EditContact()
         {
-            if (People.Count != 0)
+            if (people.Count != 0)
             {
                 Console.WriteLine("Enter the contact to modify:");
                 string Modified = Console.ReadLine();
-                foreach (var person in People)
+                foreach (var person in people)
                 {
                     if (person.FirstName.ToUpper() == Modified.ToUpper())
                     {
@@ -139,38 +147,20 @@ namespace AdvanceAddressBookSystem
 
                 }
 
-
             }
         }
 
-        //Deleting the Contact
-        public static void DeletePeople()
+
+        public void ListContact()
         {
-            Console.WriteLine("Enter the first name of the person you would like to remove.");
-            string Remove = Console.ReadLine();
-            foreach (var person in People.ToList())
-            {
-                if (person.FirstName.ToUpper() == Remove.ToUpper())
-                {
-                    People.Remove(person);
-                    Console.WriteLine("Contact is deleted");
-                }
-                else
-                {
-                    Console.WriteLine("Contact is not present");
-                }
-            }
-        }
-        public static void ListContact()
-        {
-            if (People.Count == 0)
+            if (people.Count == 0)
             {
                 Console.WriteLine("Your address book is empty.");
                 Console.ReadKey();
                 return;
             }
             Console.WriteLine("The Contacts In address book:\n");
-            foreach (var person in People)
+            foreach (var person in people)
             {
                 PrintContact(person);
             }
@@ -178,5 +168,30 @@ namespace AdvanceAddressBookSystem
             Console.ReadKey();
         }
 
+
+        public void DeletePeople()
+        {
+            Console.WriteLine("Enter the first name of the person you would like to remove.");
+            string firstName = Console.ReadLine();
+            Person person = people.FirstOrDefault(x => x.FirstName.ToUpper() == firstName.ToUpper());
+            if (person == null)
+            {
+                Console.WriteLine("That person could not be found..");
+
+                return;
+            }
+            Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
+            
+
+            //  PrintContact(person);
+
+            if (Console.ReadKey().Key == ConsoleKey.Y)
+            {
+                people.Remove(person);
+                Console.WriteLine("\nPerson removed ");
+
+            }
+
+        }
     }
 }
