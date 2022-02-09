@@ -7,35 +7,35 @@ namespace AdvanceAddressBookSystem
         static void Main(string[] args)
         {
             //Adding Contact
-            Console.WriteLine("------------Welcome To Address Book Program-------------");
+            Console.WriteLine("------------Welcome To Adderess Book Program-------------");
             Console.WriteLine("1.Enter to add the details\n2.Enter to modify the details");
             Console.WriteLine("3.Listing the details..");
             Console.WriteLine("4.Remove or Delete the Contact details");
-            Console.WriteLine("5.Multiple Contact Details");
+            Console.WriteLine("5.Multiple Contact Details /Dictionary Added");
             Console.WriteLine("Enter a option");
+            AddressBook addressBook = new AddressBook();
             switch (Console.ReadLine())
             {
                 case "1":
-                    AddressBook.GetContact();
-                    AddressBook.ListContact();
-
+                    addressBook.GetContact();
+                    addressBook.ListContact();
                     break;
                 case "2":
-                    AddressBook.GetContact();
-                    AddressBook.EditContact();
-                    AddressBook.ListContact();
+                    addressBook.GetContact();
+                    addressBook.EditContact();
+                    addressBook.ListContact();
                     break;
                 case "3":
-                    AddressBook.GetContact();
-                    AddressBook.ListContact();
+                    addressBook.GetContact();
+                    addressBook.ListContact();
                     break;
                 case "4":
-                    AddressBook.GetContact();
-                    AddressBook.DeletePeople();
+                    addressBook.GetContact();
+                    addressBook.DeletePeople();
                     break;
                 case "5":
-                    AddressBook.GetContact();
-                    AddressBook.GetContact();
+                    addressBook.GetContact();
+                    addressBook.ListContact();
                     break;
                 default:
                     Console.WriteLine("Enter a valid option");
