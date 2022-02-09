@@ -10,6 +10,7 @@ namespace AdvanceAddressBookSystem
         public static Dictionary<string, List<AddressBook>> State = new Dictionary<string, List<AddressBook>>();
         static void Main(string[] args)
         {
+
             // Set the Foreground color to blue
             Console.ForegroundColor = ConsoleColor.Blue;
 
@@ -65,7 +66,7 @@ namespace AdvanceAddressBookSystem
                 }
                 Console.WriteLine("1.To Edit/Modify the Contact  details");
                 Console.WriteLine("2.To  Delete/remove the Contact  details");
-                Console.WriteLine("If You Want TO Serach Or View Contact BY City Or State CLick 3.option");
+                Console.WriteLine("If You Want To Serach Or View Contact BY City Or State CLick 3.option");
                 Console.WriteLine("3.city or state");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -80,29 +81,8 @@ namespace AdvanceAddressBookSystem
                         Console.WriteLine(" ");
                         addrBook.ListContact();
                         break;
-                    case 3:
-                        Console.WriteLine("Enter 1-To Search a person through a City");
-                        Console.WriteLine("Enter 2-To Search a person through a State");
-                        Console.WriteLine("Enter 3-To view a person by state list or city list");
-                        int opt = Convert.ToInt32(Console.ReadLine());
-                        switch (opt)
-                        {
 
-                            case 1:
-                                SearchAddress(opt);
-                                break;
-                            case 2:
-                                SearchAddress(opt);
-                                break;
-                            case 3:
-                                AddressBook.CountCityorState();
 
-                                break;
-                            default:
-                                Console.WriteLine("Invalid Option!");
-                                break;
-                        }
-                        break;
                 }
                 if (addressBook.ContainsKey(addressbookname))
                 {
@@ -114,12 +94,47 @@ namespace AdvanceAddressBookSystem
                     addressBook.Add(addressbookname, addrBook.people);
                 }
                 noOfBooks++;
+
                 foreach (KeyValuePair<string, List<AddressBook>> addr in addressBook)
                 {
                     Console.WriteLine("The address Books are:{0}", addr.Key);
 
                 }
+
+
+                Console.WriteLine("Enter 1-To Search a person through a City");
+                Console.WriteLine("Enter 2-To Search a person through a State");
+                Console.WriteLine("Enter 3-To view a person by state list or city list");
+                Console.WriteLine("Enter 4. Sort the Person  ");
+                int opt = Convert.ToInt32(Console.ReadLine());
+                switch (opt)
+                {
+
+                    case 1:
+                        SearchAddress(opt);
+                        break;
+                    case 2:
+                        SearchAddress(opt);
+                        break;
+                    case 3:
+                        AddressBook.CountCityorState();
+                        break;
+                    case 4:
+
+                        //uc 11 sort name using sort function
+
+                        AddressBook.SortByPersonName(addressBook);
+                        break;
+
+
+                    default:
+                        Console.WriteLine("Invalid Option!");
+                        break;
+                }
+
+
             }
+
             static void SearchAddress(int option)
             {
                 string city, state;
@@ -144,6 +159,5 @@ namespace AdvanceAddressBookSystem
                 }
             }
         }
-
     }
 }
