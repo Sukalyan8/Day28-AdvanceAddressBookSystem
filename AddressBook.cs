@@ -44,7 +44,7 @@ namespace AdvanceAddressBookSystem
 
         }
 
-        //Getting Details of User
+        //Getting Details Of user
         public void GetCustomer(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
 
@@ -85,8 +85,6 @@ namespace AdvanceAddressBookSystem
             Console.WriteLine("Email Id: " + person.emailId);
             Console.WriteLine("-------------------------------------------");
         }
-
-
 
         //Editing Contact In Address Book
         public void EditContact()
@@ -174,6 +172,7 @@ namespace AdvanceAddressBookSystem
                 PrintContact(person);
             }
             return;
+
             //Console.WriteLine("\nPress any key to continue.");
             //Console.ReadKey();
         }
@@ -190,7 +189,7 @@ namespace AdvanceAddressBookSystem
                 return;
             }
             Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
-
+            
             //  PrintContact(person);
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
