@@ -44,15 +44,21 @@ namespace AdvanceAddressBookSystem
 
         }
 
+        //ToString Method to print the details
+        public override string ToString()
+        {
+            return "FirstName: " + this.firstName + " Last Name: " + this.lastName + " Address: " + this.address + "  City: " + this.city + " State: " + this.state + " Pincode: " + this.zipCode + " Phone Number: " + this.phoneNum + " Email Id: " + this.emailId;
+        }
 
-        //Getting Details of User
+        //Getting Details Of User
         public void GetCustomer(string firstName, string lastName, string phoneNum, string address, string city, string state, string zipCode, string emailId)
         {
             int contact = 0;
-            AddressBook person = new AddressBook(firstName, lastName, phoneNum, address, city, state, zipCode, emailId);
+            AddressBook person;
+
             if (contact == 0)
             {
-
+                person = new AddressBook(firstName, lastName, phoneNum, address, city, state, zipCode, emailId);
                 people.Add(person);
                 if (State.ContainsKey(state))
                 {
@@ -132,6 +138,7 @@ namespace AdvanceAddressBookSystem
         //Print Contact details
         public void PrintContact(AddressBook person)
         {
+            Console.WriteLine("Printing Contact Details");
             Console.WriteLine("First Name: " + person.firstName);
             Console.WriteLine("Last Name: " + person.lastName);
             Console.WriteLine("Phone Number: " + person.phoneNum);
@@ -218,7 +225,7 @@ namespace AdvanceAddressBookSystem
             }
         }
 
-
+        //Listing the Contact
         public void ListContact()
         {
             if (people.Count == 0)
@@ -236,6 +243,9 @@ namespace AdvanceAddressBookSystem
             //Console.WriteLine("\nPress any key to continue.");
             //Console.ReadKey();
         }
+        
+        
+        //Removing or deleting the field
 
         public void DeletePeople()
         {
@@ -249,6 +259,7 @@ namespace AdvanceAddressBookSystem
                 return;
             }
             Console.WriteLine("Are you sure you want to remove this person from your address book? (Y/N)");
+            
             
             //  PrintContact(person);
 
@@ -270,7 +281,8 @@ namespace AdvanceAddressBookSystem
             }
         }
         
-        //Display Person names found in given State
+        
+        //Display Person names  in State
         public static void StoreStateList(string key, List<AddressBook> stateList, string state)
         {
             List<AddressBook> StateList = stateList.FindAll(x => x.state.ToLower() == state);
@@ -292,7 +304,9 @@ namespace AdvanceAddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in City {2}", j.firstName, j.lastName, j.city);
                     }
-
+                    
+                    //based on city
+                    Console.WriteLine("\nCount of people in City is: {0}", i.Value.Count);
 
                 }
             }
@@ -305,7 +319,9 @@ namespace AdvanceAddressBookSystem
                     {
                         Console.WriteLine("Found person \"{0} {1}\" , residing in State {2}", b.firstName, b.lastName, b.state);
                     }
-
+                    
+                    //based on state
+                    Console.WriteLine("\nCount of people in State is: {0}\n", a.Value.Count);
                 }
             }
         }
@@ -373,7 +389,7 @@ namespace AdvanceAddressBookSystem
             }
         }
 
-        //sorts based on zipcode
+        //Sorts based on zipcode
         public static void SortBasedByZipCode(Dictionary<string, List<AddressBook>> addressBook)
         {
 
