@@ -64,9 +64,9 @@ namespace AdvanceAddressBookSystem
                     Console.WriteLine(" ");
                     addrBook.ListContact();
                 }
-                Console.WriteLine("1.To Edit/Modify the Contact details");
-                Console.WriteLine("2.To  Delete/remove the Contact details");
-                Console.WriteLine("If You Want To Search Or View Contact BY City Or State Click 3.option");
+                Console.WriteLine("1.To Edit/Modify the Contact  details");
+                Console.WriteLine("2.To  Delete/remove the Contact  details");
+                Console.WriteLine("If You Want To Serach Or View Contact By City Or State Click 3.option");
                 Console.WriteLine("3.city or state");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -81,6 +81,7 @@ namespace AdvanceAddressBookSystem
                         Console.WriteLine(" ");
                         addrBook.ListContact();
                         break;
+
 
                 }
                 if (addressBook.ContainsKey(addressbookname))
@@ -108,6 +109,8 @@ namespace AdvanceAddressBookSystem
                 Console.WriteLine("Enter 5. Sort the Based By City ");
                 Console.WriteLine("Enter 6. Sort the Based By State  ");
                 Console.WriteLine("Enter 7. Sort the Based By Zipcode ");
+                Console.WriteLine("Enter 8.write a data in file");
+                Console.WriteLine("Enter 9.read a data in file");
                 int opt = Convert.ToInt32(Console.ReadLine());
                 switch (opt)
                 {
@@ -122,7 +125,7 @@ namespace AdvanceAddressBookSystem
                         AddressBook.CountCityorState();
                         break;
                     case 4:
-                       
+                        
                         //uc 11 sort name using sort function
 
                         AddressBook.SortByPersonName(addressBook);
